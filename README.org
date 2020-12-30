@@ -62,7 +62,7 @@ It is also possible to show the interpretation (i.e. description, judgement and 
 — James Legge in The I Ching. Sacred Books of the East, vol. 16 (1899)
 #+END_QUOTE
 
-Consulting the I Ching as an oracle, in it’s most simple form involves asking a question, casting a hexagram and interpreting the hexagram and any possible changes to the hexagram.
+Consulting the I Ching as an oracle, in it’s most simple form, involves asking a question, casting a hexagram and interpreting the hexagram along with  any possible changes to the hexagram.
 
 You can query the I Ching with an invocation of ~M-x i-ching-query~
 
@@ -103,15 +103,15 @@ The ~3-coins~ and ~yarrow-stalk~ methods produce slightly different probability 
 |      9 | 3/16                     | 2/16                   | old yang   | yang changing to yin | ---o---  |
 |--------+--------------------------+------------------------+------------+----------------------+----------|
 
-In consulting an oracle the nature and source of chance, synchronicity or randomness can be considered important aspects of the process. Thus, this package can draw upon several source of randomness including =quantum= (sampling  quantum fluctuations of the vacuum via [[https://qrng.anu.edu.au/][ANU]]), =atmospheric= (atmospheric noise via [[https://random.org][random.org]]), or =pseudo= (pseudo-random numbers provided by the local computing environment) Each method may be assessed for its suitability and set as necessary.
+In consulting an oracle the nature and source of chance, synchronicity or randomness can be considered important aspects of the process. Thus, this package can draw upon several source of randomness including =quantum= (sampling  quantum fluctuations of the vacuum via [[https://qrng.anu.edu.au/][ANU]]), =atmospheric= (atmospheric noise via [[https://random.org][random.org]]), or =pseudo= (pseudo-random numbers provided by the local computing environment). Each method may be assessed for its suitability and set as necessary.
 
 #+BEGIN_SRC emacs-lisp
 (setq i-ching-randomness-source 'quantum)
 #+END_SRC
 
- The =quantum= and =atmospheric= sources of randomness both use public APIs and can make hundred of calls (specifically 121, 125 129 or 133 for the =yarrow-stalk= method) which can take seconds, or minutes depending on the service which may be rate limited. This can be used as a time for reflection. If you prefer to have a quicker casting, you can register an API key or use the local =pseudo= random source.
+ The =quantum= and =atmospheric= sources of randomness both use public APIs and can make hundred of calls (specifically 121, 125, 129 or 133 for the =yarrow-stalk= method) which can take seconds, or minutes depending on the service which may be rate limited. This can be used as a time for reflection. If you prefer to have a quicker casting, you can register an API key or use the local =pseudo= random source.
 
-Further details and analysis of the sources of randomness can be found in or near….
+Further details and analysis of the sources of randomness can be found in or near…
  - A “True Random Number Service”  https://www.random.org
  - ANU QRNG Real time demonstration of high bitrate quantum random number generation with coherent laser light. Appl. Phys. Lett. 98, 231103 (2011)  doi:10.1063/1.3597793
  - [[https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dRandom-Numbers.html][Pseudo-Random Numbers]] (The GNU C Library) and a description of [[https://www.mscs.dal.ca/~selinger/random/][The GLIBC random number generator]]
