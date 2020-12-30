@@ -7,7 +7,8 @@
 
 #+BEGIN_QUOTE
 The (first) appearance of anything (as a bud) is what we call a semblance; when it has received its complete form, we call it a definite thing
-—The I Ching. James Legge, tr
+
+—The I Ching. James Legge,
 #+END_QUOTE
 
 ** Install & configure
@@ -59,6 +60,7 @@ There are other significant methods which have not (yet) been implemented, in pa
 
 #+BEGIN_QUOTE
  Of course all divination is vain, nor is the method of the Yî less absurd than any other.
+
 — James Legge in The I Ching. Sacred Books of the East, vol. 16 (1899)
 #+END_QUOTE
 
@@ -103,8 +105,7 @@ The ~3-coins~ and ~yarrow-stalk~ methods produce slightly different probability 
 
 Further details and analysis of the sources of randomness can be found in or near….
  - A “True Random Number Service”  https://www.random.org
- - ANU QRNG Real time demonstration of high bitrate quantum random number generation with coherent laser light.
-Appl. Phys. Lett. 98, 231103 (2011)  doi:10.1063/1.3597793
+ - ANU QRNG Real time demonstration of high bitrate quantum random number generation with coherent laser light. Appl. Phys. Lett. 98, 231103 (2011)  doi:10.1063/1.3597793
  - [[https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dRandom-Numbers.html][Pseudo-Random Numbers]] (The GNU C Library) and a description of [[https://www.mscs.dal.ca/~selinger/random/][The GLIBC random number generator]]
 
 ** The Noise of Heaven & Earth. Stochastic resonance.
@@ -114,7 +115,7 @@ Appl. Phys. Lett. 98, 231103 (2011)  doi:10.1063/1.3597793
 
 ** English translations
 
-  - Richard Wilhelm (1950). The I Ching or Book of Changes. Cary Baynes, trans. Bollingen Series 19. Introduction by Carl G. Jung.
+  - Richard Wilhelm (1950). The I Ching or Book of Changes. translated by Cary Baynes,. Introduction by Carl G. Jung.
   - Margaret J. Pearson (2011). The original I ching : an authentic translation of the book of changes.
   - James Legge (1882). The Yî King. In Sacred Books of the East, vol. XVI. 2nd edition (1899)
   - Alfred Huang (2000).The Complete I Ching: The Definitive Translation
@@ -130,12 +131,15 @@ A [[https://en.wikipedia.org/wiki/List_of_hexagrams_of_the_I_Ching][List of hexa
 
 ** Otherwise
 
-[[http://jamesdekorne.com/GBCh/GBCh.htm][The Gnostic Book of Changes]] provides a guide for “Studies in Crypto-Teleological Solipsism” by combining several translations, notes and commentaries, yet exists in a copyright grey-area. There is another emacs lisp version of the i-ching that can be found on the [[https://www.emacswiki.org/emacs/i-ching.el][emacswiki]] which takes a slightly different approach and includes a few other methods, including  calendrical, beads and the (unfortunately unimplemented) FUCKUP emulation mode as described in /The Illuminatus Trology/ (there is also  [[https://github.com/Brianfit/I-Ching][a programmatic replication of the Yarrow Stalk Method of I-Ching Divination]] available in javascript.)
+[[http://jamesdekorne.com/GBCh/GBCh.htm][The Gnostic Book of Changes]] provides a guide for “Studies in Crypto-Teleological Solipsism” by combining several translations, notes and commentaries, yet exists in a copyright grey-area. There is another emacs lisp version of the i-ching that can be found on the [[https://www.emacswiki.org/emacs/i-ching.el][emacswiki]] which takes a slightly different approach and includes a few other methods, including  calendrical, beads and the (unfortunately unimplemented) FUCKUP emulation mode as described in /The Illuminatus Trilogy/ (there is also  [[https://github.com/Brianfit/I-Ching][a programmatic replication of the Yarrow Stalk Method of I-Ching Divination]] available in javascript.)
+
+[[file:diagram-1701.jpg]]
 
 ** Further
 
 #+BEGIN_QUOTE
-In conlusion, there is no conclusion. Things will go on as they always have, getting weirder all the time.
+In conclusion, there is no conclusion. Things will go on as they always have, getting weirder all the time.
+
 —Robert Anton Wilson
 #+END_QUOTE
 
