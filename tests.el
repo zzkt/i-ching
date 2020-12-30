@@ -32,8 +32,8 @@
 
 (ert-deftest i-ching-castings ()
              (should (stringp (i-ching-cast 'yarrow-stalks)))
-             (should (stringp(i-ching-cast '3-coins)))
-             (should (stringp(i-ching-cast))))
+             (should (stringp (i-ching-cast '3-coins)))
+             (should (stringp (i-ching-cast))))
 
 (ert t)
 

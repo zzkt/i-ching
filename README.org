@@ -1,14 +1,12 @@
 # -*- mode: org; coding: utf-8; -*-
 #+title: I Ching. The Book of Changes
 
-[[http://melpa.org/#/i-ching][file:http://melpa.org/packages/i-ching-badge.svg]]
-
 [[file:hexagram-40.jpg]]
 
 #+BEGIN_QUOTE
 The (first) appearance of anything (as a bud) is what we call a semblance; when it has received its complete form, we call it a definite thing
 
-—The I Ching. James Legge,
+—The I Ching (trans. James Legge)
 #+END_QUOTE
 
 ** Install & configure
@@ -20,7 +18,8 @@ The package can be installed from [[https://melpa.org/][MELPA]] or manually via 
     :config (setq i-ching-hexagram-size 18
                   i-ching-hexagram-font "DejaVu Sans"
                   i-ching-divination-method '3-coins
-                  i-ching-randomness-source 'quantum))
+                  i-ching-randomness-source 'pseudo)
+    :bind (("H-i h" . i-ching-insert-hexagram)))
 #+END_SRC
 
 ** Casting a hexagram
@@ -48,13 +47,12 @@ For the ultimate in computational pragmatism, you can produce a hexagram from a 
 
 The preferred method can be set or customized via the variable ~i-ching-divination-method~
 
-In consulting an oracle the nature and source of chance, synchronicity or randomness can be considered important aspects of the process. Thus, this package can draw upon several source of randomness including =quantum= (sampling  quantum fluctuations of the vacuum via [[https://qrng.anu.edu.au/][ANU]]), =atmospheric= (atmospheric noise via [[https://random.org][random.org]]), or =pseudo= (pseudo-random numbers provided by the local computing environment) Each method may be assessed for its suitability and set as necessary.
-
-#+BEGIN_SRC emacs-lisp
-(setq i-ching-randomness-source 'quantum)
-#+END_SRC
-
 There are other significant methods which have not (yet) been implemented, in particular the “[[https://en.wikibooks.org/wiki/I_Ching/The_Ancient_Yarrow_Stalk_Method][Ancient]]“ (Neo-Confucian reconstruction) and “[[https://en.wikibooks.org/wiki/I_Ching/The_Modified_Yarrow_Stalk_Method][Modified]]” methods of casting yarrow stalks described by Huang and some of the more idiosyncratic variants that have appeared during the 20th Century CE.
+
+It is also possible to show the interpretation (i.e. description, judgement and image) of a particular hexagram…
+#+BEGIN_SRC emacs-lisp
+(i-ching-interpretation 42)
+#+END_SRC
 
 ** Consulting the oracle
 
@@ -90,7 +88,9 @@ If the glyphs don’t appear to change you may need to call ~(i-ching-update-fon
 
 The ~3-coins~ and ~yarrow-stalk~ methods calculate values for the lines of the hexagram (6 or 9) and changing lines (7 or 8) as described in the text and commentaries. These values are represented internally as binary pairs which are used to produce a single hexagram, or a hexagram and changing hexagram. The current package does not provide commentary for individual lines or changing lines, preferring the concise description of a hexagram (and potentially the changing hexagram).
 
-** probabilities
+If a casting produces changing lines, the resulting hexagrams will appear as =䷂→䷇= or =䷥ (䷢)= when displayed.
+
+** probabilities & randomness
 
 The ~3-coins~ and ~yarrow-stalk~ methods produce slightly different probability distributions for casting a hexagram as detailed in the following table (and discussed in more detail in [[https://sabazius.oto-usa.org/probability-and-the-yi-jing/][Probability and the Yi Jing]])
 
@@ -102,6 +102,14 @@ The ~3-coins~ and ~yarrow-stalk~ methods produce slightly different probability 
 |      8 | 7/16   (yin 8/16)        | 6/16   (yin 8/16)      | young yin  | yin unchanging       | --- ---  |
 |      9 | 3/16                     | 2/16                   | old yang   | yang changing to yin | ---o---  |
 |--------+--------------------------+------------------------+------------+----------------------+----------|
+
+In consulting an oracle the nature and source of chance, synchronicity or randomness can be considered important aspects of the process. Thus, this package can draw upon several source of randomness including =quantum= (sampling  quantum fluctuations of the vacuum via [[https://qrng.anu.edu.au/][ANU]]), =atmospheric= (atmospheric noise via [[https://random.org][random.org]]), or =pseudo= (pseudo-random numbers provided by the local computing environment) Each method may be assessed for its suitability and set as necessary.
+
+#+BEGIN_SRC emacs-lisp
+(setq i-ching-randomness-source 'quantum)
+#+END_SRC
+
+ The =quantum= and =atmospheric= sources of randomness both use public APIs and can make hundred of calls (specifically 121, 125 129 or 133 for the =yarrow-stalk= method) which can take seconds, or minutes depending on the service which may be rate limited. This can be used as a time for reflection. If you prefer to have a quicker casting, you can register an API key or use the local =pseudo= random source.
 
 Further details and analysis of the sources of randomness can be found in or near….
  - A “True Random Number Service”  https://www.random.org
