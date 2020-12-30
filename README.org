@@ -1,0 +1,144 @@
+# -*- mode: org; coding: utf-8; -*-
+#+title: I Ching. The Book of Changes
+
+[[http://melpa.org/#/i-ching][file:http://melpa.org/packages/i-ching-badge.svg]]
+
+[[file:hexagram-40.jpg]]
+
+#+BEGIN_QUOTE
+The (first) appearance of anything (as a bud) is what we call a semblance; when it has received its complete form, we call it a definite thing
+—The I Ching. James Legge, tr
+#+END_QUOTE
+
+** Install & configure
+
+The package can be installed from [[https://melpa.org/][MELPA]] or manually via [[https://github.com/zzkt/i-ching][github]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package i-ching
+    :config (setq i-ching-hexagram-size 18
+                  i-ching-hexagram-font "DejaVu Sans"
+                  i-ching-divination-method '3-coins
+                  i-ching-randomness-source 'quantum))
+#+END_SRC
+
+** Casting a hexagram
+
+There are several ways to produce a hexagram, from the traditional to pragmatic.
+
+Casting coins has been used for centuries as a way of consulting the I Ching and often favoured for it’s simplicity and ease. In contrast, the yarrow stalk method is widely considered more traditional, requiring  dedication, time and careful elaboration of process. The coins may produce a result more quickly and directly (yang) while the yarrow stalks yield to time and can create contemplative focus (yin).
+
+Quickest of all (thus far) is the general purpose computer, which can produce a hexagram seemingly instantaneously.
+
+A simulation of yarrow stalks to produce a hexagram…
+#+BEGIN_SRC emacs-lisp
+(i-ching-cast 'yarrow-stalks)
+#+END_SRC
+
+To simulate three coins…
+#+BEGIN_SRC emacs-lisp
+(i-ching-cast '3-coins)
+#+END_SRC
+
+For the ultimate in computational pragmatism, you can produce a hexagram from a single 6-bit number.
+#+BEGIN_SRC emacs-lisp
+(i-ching-cast '6-bit)
+#+END_SRC
+
+The preferred method can be set or customized via the variable ~i-ching-divination-method~
+
+In consulting an oracle the nature and source of chance, synchronicity or randomness can be considered important aspects of the process. Thus, this package can draw upon several source of randomness including =quantum= (sampling  quantum fluctuations of the vacuum via [[https://qrng.anu.edu.au/][ANU]]), =atmospheric= (atmospheric noise via [[https://random.org][random.org]]), or =pseudo= (pseudo-random numbers provided by the local computing environment) Each method may be assessed for its suitability and set as necessary.
+
+#+BEGIN_SRC emacs-lisp
+(setq i-ching-randomness-source 'quantum)
+#+END_SRC
+
+There are other significant methods which have not (yet) been implemented, in particular the “[[https://en.wikibooks.org/wiki/I_Ching/The_Ancient_Yarrow_Stalk_Method][Ancient]]“ (Neo-Confucian reconstruction) and “[[https://en.wikibooks.org/wiki/I_Ching/The_Modified_Yarrow_Stalk_Method][Modified]]” methods of casting yarrow stalks described by Huang and some of the more idiosyncratic variants that have appeared during the 20th Century CE.
+
+** Consulting the oracle
+
+#+BEGIN_QUOTE
+ Of course all divination is vain, nor is the method of the Yî less absurd than any other.
+— James Legge in The I Ching. Sacred Books of the East, vol. 16 (1899)
+#+END_QUOTE
+
+Consulting the I Ching as an oracle, in it’s most simple form involves asking a question, casting a hexagram and interpreting the hexagram and any possible changes to the hexagram.
+
+You can query the I Ching with an invocation of ~M-x i-ching-query~
+
+Or programmatically using any of the casting methods described previously.
+#+BEGIN_SRC emacs-lisp
+(i-ching-query 'yarrow-stalks)
+#+END_SRC
+
+** Printing & displaying hexagrams
+
+You can cast and insert a hexagram at the current point  with ~i-ching-insert-hexagram~ or  insert a specific hexagram as required with ~(i-ching-insert-hexagram 23)~
+
+Sometimes the hexagrams may not display correctly or be too small to read. The font and size can be adjusted as needed with minimal interference to how other characters are displayed….
+
+#+BEGIN_SRC emacs-lisp
+(setq i-ching-hexagram-size 18
+      i-ching-hexagram-font "DejaVu Sans")
+#+END_SRC
+
+If the glyphs don’t appear to change you may need to call ~(i-ching-update-fontsize)~
+
+** changing or moving lines
+
+The ~3-coins~ and ~yarrow-stalk~ methods calculate values for the lines of the hexagram (6 or 9) and changing lines (7 or 8) as described in the text and commentaries. These values are represented internally as binary pairs which are used to produce a single hexagram, or a hexagram and changing hexagram. The current package does not provide commentary for individual lines or changing lines, preferring the concise description of a hexagram (and potentially the changing hexagram).
+
+** probabilities
+
+The ~3-coins~ and ~yarrow-stalk~ methods produce slightly different probability distributions for casting a hexagram as detailed in the following table (and discussed in more detail in [[https://sabazius.oto-usa.org/probability-and-the-yi-jing/][Probability and the Yi Jing]])
+
+|--------+--------------------------+------------------------+------------+----------------------+----------|
+| Number | Yarrow stick probability | Three coin probability | Yin/Yang   | Signification        | Line     |
+|--------+--------------------------+------------------------+------------+----------------------+----------|
+|      6 | 1/16                     | 2/16                   | old yin    | yin changing to yang | ---x---  |
+|      7 | 5/16  (yang 8/16)        | 6/16  (yang 8/16)      | young yang | yang unchanging      | -------- |
+|      8 | 7/16   (yin 8/16)        | 6/16   (yin 8/16)      | young yin  | yin unchanging       | --- ---  |
+|      9 | 3/16                     | 2/16                   | old yang   | yang changing to yin | ---o---  |
+|--------+--------------------------+------------------------+------------+----------------------+----------|
+
+Further details and analysis of the sources of randomness can be found in or near….
+ - A “True Random Number Service”  https://www.random.org
+ - ANU QRNG Real time demonstration of high bitrate quantum random number generation with coherent laser light.
+Appl. Phys. Lett. 98, 231103 (2011)  doi:10.1063/1.3597793
+ - [[https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dRandom-Numbers.html][Pseudo-Random Numbers]] (The GNU C Library) and a description of [[https://www.mscs.dal.ca/~selinger/random/][The GLIBC random number generator]]
+
+** The Noise of Heaven & Earth. Stochastic resonance.
+
+ - “Listen?”
+ - “Resonate”
+
+** English translations
+
+  - Richard Wilhelm (1950). The I Ching or Book of Changes. Cary Baynes, trans. Bollingen Series 19. Introduction by Carl G. Jung.
+  - Margaret J. Pearson (2011). The original I ching : an authentic translation of the book of changes.
+  - James Legge (1882). The Yî King. In Sacred Books of the East, vol. XVI. 2nd edition (1899)
+  - Alfred Huang (2000).The Complete I Ching: The Definitive Translation
+  - Wu Jing Nuan (1991) Yi Jing
+
+** Pubic Domain sources
+
+The  translation from Chinese into English by James Legge, /The Yî King/ (1882) as published in /Sacred Books of the East, vol. XVI. 2nd edition/ (1899) is in the public domain and available via [[https://archive.org/details/sacredbooksofchi16conf][archive.org]]. It appears to be  the only significant English translation that is currently in the public domain.
+
+The German translation and commentary by Richard Wilhelm, /I Ging Das Buch der Wandlungen/ (1924) is in the public domain and available via [[https://www.projekt-gutenberg.org/autoren/namen/wilhelm.html][Projekt Gutenberg]]. Wilhelm’s translation from Chinese into German was translated into English as /The I Ching or Book of Changes/ (1950) by Cary Baynes and should enter the public domain in 2047. Wilhelm’s translation has provided the basis for translation into several other European languages
+
+A [[https://en.wikipedia.org/wiki/List_of_hexagrams_of_the_I_Ching][List of hexagrams of the I Ching]] and some details of the  [[https://en.wikipedia.org/wiki/King_Wen_sequence][King Wen sequence]] can be found on Wikipedia.
+
+** Otherwise
+
+[[http://jamesdekorne.com/GBCh/GBCh.htm][The Gnostic Book of Changes]] provides a guide for “Studies in Crypto-Teleological Solipsism” by combining several translations, notes and commentaries, yet exists in a copyright grey-area. There is another emacs lisp version of the i-ching that can be found on the [[https://www.emacswiki.org/emacs/i-ching.el][emacswiki]] which takes a slightly different approach and includes a few other methods, including  calendrical, beads and the (unfortunately unimplemented) FUCKUP emulation mode as described in /The Illuminatus Trology/ (there is also  [[https://github.com/Brianfit/I-Ching][a programmatic replication of the Yarrow Stalk Method of I-Ching Divination]] available in javascript.)
+
+** Further
+
+#+BEGIN_QUOTE
+In conlusion, there is no conclusion. Things will go on as they always have, getting weirder all the time.
+—Robert Anton Wilson
+#+END_QUOTE
+
+  - [[http://self.gutenberg.org/articles/eng/The_Lottery_in_Babylon][The Lottery in Babylon]]
+  - [[https://designviz.osu.edu/iching/][Movements of Change - visualizing I-Ching]]
+  - Ekikyō 易経
