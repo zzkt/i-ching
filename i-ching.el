@@ -521,16 +521,21 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
   (let ((hexagrams i-ching-hexagram-summary))
     (nth 4 (alist-get number hexagrams))))
 
-(defun i-ching-describe-hexagram (point)
-  "Show the name of a HEXAGRAM at (before) POINT based on it's unicode name."
-  (interactive "d")
-  (let* ((hexagrams i-ching-hexagram-summary)
-         (hexagram
-           (nth 4 (alist-get (char-before point) hexagrams))))
-    (message "%s"
-             (if hexagram
-                 (capitalize (seq-drop hexagram 13))
-                 "Not a hexagram"))))
+
+(defun i-ching-describe-hexagram (point mark)
+  "Show the name of a HEXAGRAM (between POINT and MARK) based on it's unicode name."
+  (interactive "r")
+  (if (use-region-p)
+      (let* ((hexagrams i-ching-hexagram-summary)
+             (selection (buffer-substring point mark))
+             (hexagram
+               (nth 4 (alist-get
+                       (i-ching-hexagram-to-number selection)
+                       hexagrams))))
+        (message "%s" (if hexagram
+                          (capitalize (seq-drop hexagram 13))
+                          "Not a hexagram")))
+      (message "Nothing selected")))
 
 
 ;;;;; ;  ; ;       ;
@@ -677,10 +682,10 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
 ;;  Each function should produce a binary pair corresponding to a line of a hexagram
 ;;  as follows...
 ;;
-;;   (0 1)) is yin changing to yang
-;;   (1 1)) is yang
-;;   (0 0)) is yin
-;;   (1 0)) is yang changing to yinn
+;;   (0 1) is yin changing to yang
+;;   (1 1) is yang
+;;   (0 0) is yin
+;;   (1 0) is yang changing to yinn
 ;;
 ;;;;;;; ;    ; ;
 
