@@ -56,7 +56,7 @@ pragmatic.
    Casting coins has been used for centuries as a way of consulting the
 I Ching and often favoured for it’s simplicity and ease. In contrast,
 the yarrow stalk method is widely considered more traditional,
-requiring  dedication, time and careful elaboration of process. The
+requiring dedication, time and careful elaboration of process. The
 coins may produce a result more quickly and directly (yang) while the
 yarrow stalks yield to time and can create contemplative focus (yin).
 
@@ -104,7 +104,7 @@ File: i-ching.info,  Node: Consulting the oracle,  Next: Printing & displaying h
 
    Consulting the I Ching as an oracle, in it’s most simple form,
 involves asking a question, casting a hexagram and interpreting the
-hexagram along with  any possible changes to the hexagram.
+hexagram along with any possible changes to the hexagram.
 
    You can query the I Ching with an invocation of `M-x i-ching-query'
 
@@ -118,8 +118,8 @@ File: i-ching.info,  Node: Printing & displaying hexagrams,  Next: changing or m
 4 Printing & displaying hexagrams
 *********************************
 
-You can cast and insert a hexagram at the current point  with
-`i-ching-insert-hexagram' or  insert a specific hexagram as required
+You can cast and insert a hexagram at the current point with
+`i-ching-insert-hexagram' or insert a specific hexagram as required
 with `(i-ching-insert-hexagram 23)'
 
    Sometimes the hexagrams may not display correctly or be too small to
@@ -170,7 +170,7 @@ Value   Yarrow stalks p(S)   Three coins p(S)    Yin/Yang     Signification     
    In consulting an oracle the nature and source of chance,
 synchronicity or randomness can be considered important aspects of the
 process. Thus, this package can draw upon several source of randomness
-including `quantum' (sampling  quantum fluctuations of the vacuum via
+including `quantum' (sampling quantum fluctuations of the vacuum via
 ANU (https://qrng.anu.edu.au/)), `atmospheric' (atmospheric noise via
 random.org (https://random.org)), or `pseudo' (pseudo-random numbers
 provided by the local computing environment). Each method may be
@@ -187,11 +187,11 @@ you can register an API key or use the local `pseudo' random source.
 
    Further details and analysis of the sources of randomness can be
 found in or near…
-   * A “True Random Number Service”  `https://www.random.org'
+   * A “True Random Number Service” `https://www.random.org'
 
    * ANU QRNG Real time demonstration of high bitrate quantum random
      number generation with coherent laser light. Appl. Phys. Lett. 98,
-     231103 (2011)  `10.1063/1.3597793'
+     231103 (2011) `10.1063/1.3597793'
 
    * Pseudo-Random Numbers
      (https://www.gnu.org/software/libc/manual/html_node/Pseudo_002dRandom-Numbers.html)
@@ -223,7 +223,7 @@ File: i-ching.info,  Node: English translations,  Next: Pubic Domain sources,  P
    * James Legge (1882). The Yî King. In Sacred Books of the East,
      vol. XVI. 2nd edition (1899)
 
-   * Alfred Huang (2000).The Complete I Ching: The Definitive
+   * Alfred Huang (2000). The Complete I Ching: The Definitive
      Translation
 
    * Wu Jing Nuan (1991) Yi Jing
@@ -234,12 +234,14 @@ File: i-ching.info,  Node: Pubic Domain sources,  Next: Otherwise,  Prev: Englis
 9 Pubic Domain sources
 **********************
 
-The  translation from Chinese into English by James Legge, _The Yî
+The translation from Chinese into English by James Legge, _The Yî
 King_ (1882) as published in _Sacred Books of the East, vol. XVI. 2nd
 edition_ (1899) is in the public domain and available via archive.org
 (https://archive.org/details/sacredbooksofchi16conf). It appears to be
 the only significant English translation that is currently in the
-public domain.
+public domain. There is a parallel Chinese/English edition 《易經 -
+Yi Jing》 (https://ctext.org/book-of-changes/yi-jing) hosted at the
+Chinese Text Project (https://ctext.org) using the Legge translation.
 
    The German translation and commentary by Richard Wilhelm, _I Ging
 Das Buch der Wandlungen_ (1924) is in the public domain and available
@@ -252,7 +254,7 @@ provided the basis for translation into several other European languages
 
    A List of hexagrams of the I Ching
 (https://en.wikipedia.org/wiki/List_of_hexagrams_of_the_I_Ching) and
-some details of the  King Wen sequence
+some details of the King Wen sequence
 (https://en.wikipedia.org/wiki/King_Wen_sequence) can be found on
 Wikipedia.
 
@@ -301,14 +303,14 @@ Tag Table:
 Node: Top74
 Node: Install & configure803
 Node: Casting a hexagram1371
-Node: Consulting the oracle3131
-Node: Printing & displaying hexagrams3879
-Node: changing or moving lines4619
-Node: probabilities & randomness5423
-Node: The Noise of Heaven & Earth Stochastic resonance8043
-Node: English translations8344
-Node: Pubic Domain sources8991
-Node: Otherwise10237
-Node: Further11085
+Node: Consulting the oracle3130
+Node: Printing & displaying hexagrams3877
+Node: changing or moving lines4615
+Node: probabilities & randomness5419
+Node: The Noise of Heaven & Earth Stochastic resonance8036
+Node: English translations8337
+Node: Pubic Domain sources8985
+Node: Otherwise10424
+Node: Further11272
 
 End Tag Table
