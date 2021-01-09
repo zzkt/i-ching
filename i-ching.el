@@ -507,12 +507,12 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
     (nth 1 (alist-get number hexagrams))))
 
 (defun i-ching-number-to-judgment (number)
-  "Present an interpretation of Hexagram NUMBER."
+  "Present an interpretation (judgment) of Hexagram NUMBER."
   (let ((hexagrams i-ching-hexagram-summary))
     (nth 2 (alist-get number hexagrams))))
 
 (defun i-ching-number-to-image (number)
-  "Present an interpretation of Hexagram NUMBER."
+  "Present an interpretation (image) of Hexagram NUMBER."
   (let ((hexagrams i-ching-hexagram-summary))
     (nth 3 (alist-get number hexagrams))))
 
@@ -521,6 +521,11 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
   (let ((hexagrams i-ching-hexagram-summary))
     (nth 4 (alist-get number hexagrams))))
 
+(defun i-ching-number-to-name (number)
+  "The name of Hexagram NUMBER based on it's unicode name."
+  (let* ((hexagrams i-ching-hexagram-summary)
+         (unicode-name (nth 4 (alist-get number hexagrams))))
+    (capitalize (seq-drop unicode-name 13))))
 
 (defun i-ching-describe-hexagram (point mark)
   "Show the name of a HEXAGRAM (between POINT and MARK) based on it's unicode name."
@@ -558,6 +563,7 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
                  ;;  the casting method should return a hexagram (or changing hexagram)
                  ('3-coins  #'i-ching--three-coins)
                  ('yarrow-stalks #'i-ching--yarrow-stalks)
+                 ('6-bit #'i-ching--random-number)
                  ('4-coins (message "unimplemented"))
                  ('bagua (message "unimplemented"))
                  ('cheezburger (message "LOL"))
