@@ -525,7 +525,8 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
   "The name of Hexagram NUMBER based on it's unicode name."
   (let* ((hexagrams i-ching-hexagram-summary)
          (unicode-name (nth 4 (alist-get number hexagrams))))
-    (capitalize (seq-drop unicode-name 13))))
+    (when unicode-name
+      (capitalize (seq-drop unicode-name 13)))))
 
 (defun i-ching-describe-hexagram (point mark)
   "Show the name of a HEXAGRAM (between POINT and MARK) based on it's unicode name."
