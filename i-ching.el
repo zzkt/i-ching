@@ -710,17 +710,16 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
 
 (defun i-ching--three-coins ()
   "Simulate 3 coins.  The retrn value is a pair of lines."
-  (cl-letf (((symbol-function 'coin-toss) #'i-ching--coin-toss))
-           (let ((result (+ (coin-toss)
-                            (coin-toss)
-                            (coin-toss))))
-             ;; single hexagram. no changing lines
-             (pcase result
-                    (6 '(0 1)) ;; yin changing
-                    (7 '(1 1)) ;; yang
-                    (8 '(0 0)) ;; yin
-                    (9 '(1 0)) ;; yang changing
-                    ))))
+  (let ((result (+ (i-ching--coin-toss)
+                   (i-ching--coin-toss)
+                   (i-ching--coin-toss))))
+    ;; single hexagram. no changing lines
+    (pcase result
+      (6 '(0 1)) ;; yin changing
+      (7 '(1 1)) ;; yang
+      (8 '(0 0)) ;; yin
+      (9 '(1 0)) ;; yang changing
+      )))
 
 (defun i-ching--yarrow-stalks ()
   "Cast simulated yarrow stalks, return a value for a line, or  changing line..."
@@ -733,7 +732,7 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
     ;; One stalk is set aside and not used again
     (setq yarrow-stalks (1- yarrow-stalks))
     ;; The bundle of the remaining stalks is divided into two bundles
-    (dotimes (i yarrow-stalks)
+    (dotimes (_ yarrow-stalks)
       (if (= 1 (i-ching-random 2))
           (setq east (1+ east))
           (setq west (1+ west))))
@@ -757,7 +756,7 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
     (setq yarrow-stalks (- yarrow-stalks left))
     (setq east 0 west 0 left 0 group 0)
     ;; The bundle of the remaining stalks is divided into two bundles
-    (dotimes (i yarrow-stalks)
+    (dotimes (_ yarrow-stalks)
       (if (= 1 (i-ching-random 2))
           (setq east (1+ east))
           (setq west (1+ west))))
@@ -784,7 +783,7 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
     (setq yarrow-stalks (- yarrow-stalks left))
     (setq east 0 west 0 left 0 group 0)
     ;; The bundle of the remaining stalks is divided into two bundles
-    (dotimes (i yarrow-stalks)
+    (dotimes (_ yarrow-stalks)
       (if (= 1 (i-ching-random 2))
           (setq east (1+ east))
           (setq west (1+ west))))
@@ -854,7 +853,7 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
   "Consult the I Ching using a particular METHOD."
   (interactive)
   (read-string "What is your question? ")
-  (let* ((query (i-ching-query-string 'method))
+  (let* ((query (i-ching-query-string method))
          (reading-buffer (get-buffer-create "*The I Ching*")))
     (with-current-buffer reading-buffer
       (goto-char (point-min))

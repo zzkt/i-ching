@@ -35,6 +35,10 @@
              (should (stringp (i-ching-cast '3-coins)))
              (should (stringp (i-ching-cast))))
 
+;; (i-ching-query '6-bit)
+;; (i-ching-query '3-coins)
+;; (i-ching-query 'yarrow-stalks)
+
 (ert t)
 
 ;;; tests.el ends here
