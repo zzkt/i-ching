@@ -13,7 +13,7 @@ The (first) appearance of anything (as a bud) is what we call a semblance; when 
 
 ** Install & configure
 
-The package can be installed from [[https://melpa.org/][MELPA]] or manually via [[https://github.com/zzkt/i-ching][github]].
+The package can be installed from [[https://melpa.org/][MELPA]] (eventually) or manually via [[https://github.com/zzkt/i-ching][github]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package i-ching

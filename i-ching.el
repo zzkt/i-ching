@@ -49,9 +49,9 @@
 ;;; Code:
 (require 'request)
 
-
 (defgroup i-ching '()
   "Cast hexagrams and consult the I Ching."
+  :prefix "i-ching-"
   :group 'stochastism)
 
 ;; configuration and customisation
@@ -240,7 +240,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
         "HEXAGRAM FOR FOLLOWING")
     (18 "䷑"
         "Hexagram 18 is named 蠱 (gǔ), “Repair”. Other variations include “work on what has been spoiled (decay)”, Correcting, misdeeds, decaying and “branch”.[1] Its inner (lower) trigram is ☴ (巽 xùn) ground = (風) wind, and its outer (upper) trigram is ☶ (艮 gèn) bound = (山) mountain. Gu is the name of a venom-based poison traditionally used in Chinese witchcraft."
-        "Successful progress is indicated for those who properly repair what has been spoiled. It is advantageous to cross the great river. You should  consider carefully the events three days before the turning point and the tasks remaining for three days afterwards."
+        "Successful progress is indicated for those who properly repair what has been spoiled. It is advantageous to cross the great river. You should consider carefully the events three days before the turning point and the tasks remaining for three days afterwards."
         "The wind blows low on the mountain: The image of DECAY. Thus, you should encourage people and strengthen their spirit."
         "HEXAGRAM FOR WORK ON THE DECAYED")
     (19 "䷒"
@@ -405,8 +405,8 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
         "HEXAGRAM FOR THE CAULDRON")
     (51 "䷲"
         "Hexagram 51 is named 震 (zhèn), “Shock”. Other variations include “the arousing (shock, thunder)”, Thunder, The Symbol of Startling Movement, Shake, The Beginning of Movement, Shocking, The Thunderclap, Action, Motion, Sudden Change, Surprise! . Both its inner and outer trigrams are ☳ (震 zhèn) shake = (雷) thunder."
-        "SHOCK  intimates ease and development. When the time of movement which it indicates comes, the subject of the hexagram will be found looking out with apprehension, and yet smiling and talking cheerfully. When the movement like a crash of thunder terrifies all within a hundred miles, he will be like the sincere worshipper who is not startled into dropping his ladle and cup of sacrificial spirits."
-        "Thunder repeated: the image of SHOCK.  You should remain fearful and apprehensive, cultivate virtue, and examine your faults."
+        "SHOCK intimates ease and development. When the time of movement which it indicates comes, the subject of the hexagram will be found looking out with apprehension, and yet smiling and talking cheerfully. When the movement like a crash of thunder terrifies all within a hundred miles, he will be like the sincere worshipper who is not startled into dropping his ladle and cup of sacrificial spirits."
+        "Thunder repeated: the image of SHOCK. You should remain fearful and apprehensive, cultivate virtue, and examine your faults."
         "HEXAGRAM FOR THE AROUSING THUNDER")
     (52 "䷳"
         "Hexagram 52 is named 艮 (gèn), “Keeping Still”. Other variations include Mountain, The Symbol of Checking and Stopping, Desisting, Stilling, Stillness, Stoppage, Bound, Reposing, Resting, Meditation, Non-action, Stopping, Arresting Movement. Both its inner and outer trigrams are ☶ (艮 gèn) bound = (山) mountain."
@@ -436,7 +436,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
     (57 "䷸"
         "Hexagram 57 is named 巽 (xùn), “Ground”. Other variations include “the gentle (the penetrating, wind)” and “calculations”. Both its inner and outer trigrams are ☴ (巽 xùn) ground = (風) wind."
         "THE GENTLE. Modest success. Look for important people and move in the direction that implies."
-        "Wind following wind upon the other:  You should articulate your directions and undertakes your work."
+        "Wind following wind upon the other: You should articulate your directions and undertakes your work."
         "HEXAGRAM FOR THE GENTLE WIND")
     (58 "䷹"
         "Hexagram 58 is named 兌 (duì), “Joy”. Other variations include The Joyous, Joyousness, Pleased Satisfaction, Encouraging, Delight, Open, Usurpation, Self-indulgence, Pleasure, Cheerfulness, Frivolity, Callow Optimism. Both its inner and outer trigrams are ☱ (兌 duì) open = (澤) swamp."
@@ -473,7 +473,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
         "BEFORE COMPLETION. Success. But if the young fox, that has nearly crossed the stream, gets his tail wet there will be no advantage."
         "The image of the condition before transition. Thus, you should carefully discriminate among the qualities of things, so that each can find its place."
         "HEXAGRAM FOR BEFORE COMPLETION"))
-  "The Hexagrams.  Their name, description, judgment and image.  Basis for interpretation.")
+  "The Hexagrams. Their name, description, judgment and image. Basis for interpretation.")
 
 
 ;;;;;; ;;;;;   ; ;  ; ; ; ; ;   ;
@@ -528,6 +528,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
     (when unicode-name
       (capitalize (seq-drop unicode-name 13)))))
 
+;;;###autoload
 (defun i-ching-describe-hexagram (point mark)
   "Show the name of a HEXAGRAM (between POINT and MARK) based on it's unicode name."
   (interactive "r")
@@ -627,6 +628,15 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
        (i-ching-number-to-hexagram number)
        (i-ching-cast))))
 
+;;;###autoload
+(defun i-ching-insert-hexagram-and-name (&optional number)
+  "Insert a hexagram either by casting or it's NUMBER in the King Wen sequence."
+  (interactive)
+  (let ((hxn (i-ching-random 64)))
+    (insert (format "%s %s"
+                    (i-ching-number-to-hexagram hxn)
+                    (i-ching-number-to-name hxn)))))
+
 
 ;;;; ;    ; ;;;;; ;  ;     ;
 ;;
@@ -651,7 +661,7 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
 
 
 (defun i-ching-q64 ()
-  "Genuine Quantum Randomness™️ from quantum fluctuations of the vacuum.
+  "Genuine Quantum Randomness™️ from quantum fluctuations of the vacuum [1..64].
 Provided by ANU QRNG via https://qrng.anu.edu.au/"
   (let ((numeric 0))
     (request
@@ -669,8 +679,8 @@ Provided by ANU QRNG via https://qrng.anu.edu.au/"
 
 
 (defun i-ching-r64 ()
-  "True random numbers [1..64] from atmospheric noise.
-Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
+  "True random numbers from atmospheric noise [1..64].
+Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
   (let ((numeric 0))
     (request
      "https://www.random.org/integers/?num=1&min=1&max=64&col=1&base=10&format=plain&rnd=new"
@@ -710,7 +720,7 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
     result))
 
 (defun i-ching--three-coins ()
-  "Simulate 3 coins.  The retrn value is a pair of lines."
+  "Simulate 3 coins. The retrn value is a pair of lines."
   (let ((result (+ (i-ching--coin-toss)
                    (i-ching--coin-toss)
                    (i-ching--coin-toss))))
@@ -723,7 +733,7 @@ Provided by Randomness and Integrity Services Ltd.  via https://www.random.org/"
       )))
 
 (defun i-ching--yarrow-stalks ()
-  "Cast simulated yarrow stalks, return a value for a line, or  changing line..."
+  "Cast simulated yarrow stalks, return a value for a line, or changing line..."
   (let ((yarrow-stalks 50)
         (west 0)
         (east 0)
