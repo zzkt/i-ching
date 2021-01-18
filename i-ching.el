@@ -536,13 +536,13 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
       (let* ((hexagrams i-ching-hexagram-summary)
              (selection (buffer-substring point mark))
              (hexagram
-               (nth 4 (alist-get
-                       (i-ching-hexagram-to-number selection)
-                       hexagrams))))
+              (nth 4 (alist-get
+                      (i-ching-hexagram-to-number selection)
+                      hexagrams))))
         (message "%s" (if hexagram
                           (capitalize (seq-drop hexagram 13))
-                          "Not a hexagram")))
-      (message "Nothing selected")))
+                        "Not a hexagram")))
+    (message "Nothing selected")))
 
 
 ;;;;; ;  ; ;       ;
@@ -561,16 +561,16 @@ Depending on the context and circumstance some methods may be more suitable.
 see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
   (interactive)
   (let ((method-function
-          (pcase method
-                 ;;  the casting method should return a hexagram (or changing hexagram)
-                 ('3-coins  #'i-ching--three-coins)
-                 ('yarrow-stalks #'i-ching--yarrow-stalks)
-                 ('6-bit #'i-ching--random-number)
-                 ('4-coins (message "unimplemented"))
-                 ('bagua (message "unimplemented"))
-                 ('cheezburger (message "LOL"))
-                 (_
-                  #'i-ching--random-number))))
+         (pcase method
+           ;;  the casting method should return a hexagram (or changing hexagram)
+           ('3-coins  #'i-ching--three-coins)
+           ('yarrow-stalks #'i-ching--yarrow-stalks)
+           ('6-bit #'i-ching--random-number)
+           ('4-coins (message "unimplemented"))
+           ('bagua (message "unimplemented"))
+           ('cheezburger (message "LOL"))
+           (_
+            #'i-ching--random-number))))
     (when method-function
       (let* ((line-1 (funcall method-function))
              (line-2 (funcall method-function))
@@ -614,9 +614,9 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
           ;; the two hexagrams the same if there are no changing lines
           (if (eql hexagram hexagram-changing)
               (i-ching-binary-to-hexagram hexagram)
-              (format "%s→%s"
-                      (i-ching-binary-to-hexagram hexagram)
-                      (i-ching-binary-to-hexagram hexagram-changing))))))))
+            (format "%s→%s"
+                    (i-ching-binary-to-hexagram hexagram)
+                    (i-ching-binary-to-hexagram hexagram-changing))))))))
 
 
 ;;;###autoload
@@ -626,7 +626,7 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
   (insert
    (if number
        (i-ching-number-to-hexagram number)
-       (i-ching-cast))))
+     (i-ching-cast))))
 
 ;;;###autoload
 (defun i-ching-insert-hexagram-and-name (&optional number)
@@ -649,15 +649,15 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
   (when (not source) (setq source i-ching-randomness-source))
   (message "using: %s" source)
   (pcase source
-         ('quantum (pcase n
-                          (64 (i-ching-q64))
-                          (_  (/ (i-ching-q64) (/ 64 n)))))
-         ('atmospheric (pcase n
-                              (64 (i-ching-r64))
-                              (_  (/ (i-ching-r64) (/ 64 n)))))
-         ('pseudo (+ 1 (random n)))
-         (_
-          (+ 1 (random n)))))
+    ('quantum (pcase n
+                (64 (i-ching-q64))
+                (_  (/ (i-ching-q64) (/ 64 n)))))
+    ('atmospheric (pcase n
+                    (64 (i-ching-r64))
+                    (_  (/ (i-ching-r64) (/ 64 n)))))
+    ('pseudo (+ 1 (random n)))
+    (_
+     (+ 1 (random n)))))
 
 
 (defun i-ching-q64 ()
@@ -665,16 +665,16 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
 Provided by ANU QRNG via https://qrng.anu.edu.au/"
   (let ((numeric 0))
     (request
-     "https://qrng.anu.edu.au/API/jsonI.php?length=1&type=hex16&size=1"
-     :sync t
-     :parser 'json-read
-     :success (cl-function
-               (lambda (&key data &allow-other-keys)
-                 (setq
-                  numeric
-                  (/ (string-to-number
-                      (elt (alist-get 'data data) 0) 16)
-                     4)))))
+      "https://qrng.anu.edu.au/API/jsonI.php?length=1&type=hex16&size=1"
+      :sync t
+      :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setq
+                   numeric
+                   (/ (string-to-number
+                       (elt (alist-get 'data data) 0) 16)
+                      4)))))
     numeric))
 
 
@@ -683,12 +683,12 @@ Provided by ANU QRNG via https://qrng.anu.edu.au/"
 Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
   (let ((numeric 0))
     (request
-     "https://www.random.org/integers/?num=1&min=1&max=64&col=1&base=10&format=plain&rnd=new"
-     :sync t
-     ;; :parser 'json-read
-     :success (cl-function
-               (lambda (&key data &allow-other-keys)
-                 (setf numeric (string-to-number data)))))
+      "https://www.random.org/integers/?num=1&min=1&max=64&col=1&base=10&format=plain&rnd=new"
+      :sync t
+      ;; :parser 'json-read
+      :success (cl-function
+                (lambda (&key data &allow-other-keys)
+                  (setf numeric (string-to-number data)))))
     numeric))
 
 
@@ -709,9 +709,9 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
 (defun i-ching--random-number ()
   "Random line selection (unchanging)..."
   (pcase (i-ching-random 2)
-         (1 '(1 1)) ;; yang
-         (2 '(0 0)) ;; yin
-         ))
+    (1 '(1 1)) ;; yang
+    (2 '(0 0)) ;; yin
+    ))
 
 (defun i-ching--coin-toss ()
   "Simulate tossing a  coin where H=2 and T=3."
@@ -746,7 +746,7 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
     (dotimes (_ yarrow-stalks)
       (if (= 1 (i-ching-random 2))
           (setq east (1+ east))
-          (setq west (1+ west))))
+        (setq west (1+ west))))
     ;; One stalk is taken from the east bundle and placed between the fingers of the left hand
     (setq east (1- east))
     (setq left (1+ left))
@@ -770,7 +770,7 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
     (dotimes (_ yarrow-stalks)
       (if (= 1 (i-ching-random 2))
           (setq east (1+ east))
-          (setq west (1+ west))))
+        (setq west (1+ west))))
     ;; One stalk is taken from the east bundle and placed between the fingers of the left hand
     (setq east (1- east))
     (setq left (1+ left))
@@ -787,7 +787,7 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
     ;; eight stalks results in the value of 2, four stalks results in the value of 3
     (if (= 8 left)
         (setq result (+ result 2))
-        (setq result (+ result 3)))
+      (setq result (+ result 3)))
 
     ;; These stalks are set aside and the remaining bundle of 32, 36 or 40 stalks is divided
     ;; and counted out in the same manner for a third operation
@@ -797,7 +797,7 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
     (dotimes (_ yarrow-stalks)
       (if (= 1 (i-ching-random 2))
           (setq east (1+ east))
-          (setq west (1+ west))))
+        (setq west (1+ west))))
     ;; One stalk is taken from the east bundle and placed between the fingers of the left hand
     (setq east (1- east))
     (setq left (1+ left))
@@ -813,14 +813,14 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
     ;; eight stalks results in the value of 2, four stalks results in the value of 3
     (if (= 8 left)
         (setq result (+ result 2))
-        (setq result (+ result 3)))
+      (setq result (+ result 3)))
     ;; three values are now added together to produce a total of 6, 7, 8, or 9
     (pcase result
-           (6 '(0 1)) ;; yin changing
-           (7 '(1 1)) ;; yang
-           (8 '(0 0)) ;; yin
-           (9 '(1 0)) ;; yang changing
-           )))
+      (6 '(0 1)) ;; yin changing
+      (7 '(1 1)) ;; yang
+      (8 '(0 0)) ;; yin
+      (9 '(1 0)) ;; yang changing
+      )))
 
 
 ;; interpreting a hexagram
@@ -846,16 +846,16 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
          (changing (when (= 3 (length cast))
                      (string (elt cast 2))))
          (result
-           (if changing
-               (format "%s → %s\n\n%s\n\n%s"
-                       hexagram changing
-                       (i-ching-interpretation
-                        (i-ching-hexagram-to-number hexagram))
-                       (i-ching-interpretation
-                        (i-ching-hexagram-to-number changing)))
-               (format "%s"
-                       (i-ching-interpretation
-                        (i-ching-hexagram-to-number hexagram))))))
+          (if changing
+              (format "%s → %s\n\n%s\n\n%s"
+                      hexagram changing
+                      (i-ching-interpretation
+                       (i-ching-hexagram-to-number hexagram))
+                      (i-ching-interpretation
+                       (i-ching-hexagram-to-number changing)))
+            (format "%s"
+                    (i-ching-interpretation
+                     (i-ching-hexagram-to-number hexagram))))))
     (message "cast: %s\n" cast)
     result))
 
