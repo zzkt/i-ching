@@ -632,10 +632,12 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
 (defun i-ching-insert-hexagram-and-name (&optional number)
   "Insert a hexagram either by casting or it's NUMBER in the King Wen sequence."
   (interactive)
-  (let ((hxn (i-ching-random 64)))
+  (let ((hexagram (if number
+                      number
+                    (i-ching-random 64))))
     (insert (format "%s %s"
-                    (i-ching-number-to-hexagram hxn)
-                    (i-ching-number-to-name hxn)))))
+                    (i-ching-number-to-hexagram hexagram)
+                    (i-ching-number-to-name hexagram)))))
 
 
 ;;;; ;    ; ;;;;; ;  ;     ;
