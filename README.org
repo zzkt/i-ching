@@ -13,7 +13,7 @@ The (first) appearance of anything (as a bud) is what we call a semblance; when 
 
 ** Install & configure
 
-The package can be installed from [[https://melpa.org/][MELPA]] (eventually) or manually via [[https://github.com/zzkt/i-ching][github]].
+The package can be installed from [[https://melpa.org/#/i-ching][MELPA]] or manually via [[https://github.com/zzkt/i-ching][github]].
 
 #+BEGIN_SRC emacs-lisp
 (use-package i-ching
@@ -77,7 +77,7 @@ Or programmatically using any of the casting methods described previously.
 
 You can cast and insert a hexagram at the current point with ~i-ching-insert-hexagram~ or insert a specific hexagram as required with ~(i-ching-insert-hexagram 23)~
 
-Sometimes the hexagrams may not display correctly or be too small to read. The font and size can be adjusted as needed with minimal interference to how other characters are displayed….
+Sometimes the hexagrams may not display correctly or be too small to read. Ensure that you have a font installed that contains the hexagram characters (such as the [[https://dejavu-fonts.github.io/][DejaVu]] family or [[https://en.wikipedia.org/wiki/Apple_Symbols][Apple Symbols]] on macOS). The font and size can be adjusted as needed with minimal interference to how other characters are displayed….
 
 #+BEGIN_SRC emacs-lisp
 (setq i-ching-hexagram-size 18

@@ -34,7 +34,7 @@
 ;; querying the oracle, and finding patterns in randomness.
 ;;
 ;; The descriptions of hexagrams and their classification have been drawn from
-;; public domain sources, tradition and antiquity.  Further details of usage
+;; public domain sources, tradition and antiquity. Further details of usage
 ;; along with reading & study material can be found in the README file.
 
 
@@ -160,7 +160,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
        "HEXAGRAM FOR THE CREATIVE HEAVEN")
     (2 "䷁"
        "Hexagram 2 is named 坤 (kūn), “Field”. Other variations include “the receptive”, “acquiescence”, and “the flow”. Its inner (lower) trigram is ☷ (坤 kūn) field = (地) earth, and its outer (upper) trigram is identical."
-       "THE RECEPTIVE brings about sublime success, Furthering through the perseverance of a mare. If you undertake something and try to lead, things go astray; But if you should follows, you will finds guidance. It is favorable to find friends in the west and south, To forego friends in the east and north. Quiet perseverance brings good fortune."
+       "THE RECEPTIVE brings about sublime success, Furthering through the perseverance of a mare. If you undertake something and try to lead, things go astray; But if you should follow, you will find guidance. It is favorable to find friends in the west and south, To forego friends in the east and north. Quiet perseverance brings good fortune."
        "The earth's condition is receptive devotion. Thus the person who has breadth of character carries the outer world."
        "HEXAGRAM FOR THE RECEPTIVE EARTH")
     (3 "䷂"
