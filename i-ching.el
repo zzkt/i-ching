@@ -632,12 +632,22 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
 (defun i-ching-insert-hexagram-and-name (&optional number)
   "Insert a hexagram either by casting or it's NUMBER in the King Wen sequence."
   (interactive)
+    (let ((hexagram (if number
+                      number
+                    (i-ching-random 64))))
+    (insert (i-ching-hexagram-and-name-string hexagram))))
+
+
+;;;###autoload
+(defun i-ching-hexagram-and-name-string (&optional number)
+  "Return a hexagram either by casting or it's NUMBER in the King Wen sequence."
+  (interactive)
   (let ((hexagram (if number
                       number
                     (i-ching-random 64))))
-    (insert (format "%s %s"
-                    (i-ching-number-to-hexagram hexagram)
-                    (i-ching-number-to-name hexagram)))))
+    (format "%s %s"
+            (i-ching-number-to-hexagram hexagram)
+            (i-ching-number-to-name hexagram))))
 
 
 ;;;; ;    ; ;;;;; ;  ;     ;
@@ -704,7 +714,7 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
 ;;   (0 1) is yin changing to yang
 ;;   (1 1) is yang
 ;;   (0 0) is yin
-;;   (1 0) is yang changing to yinn
+;;   (1 0) is yang changing to yin
 ;;
 ;;;;;;; ;    ; ;
 
