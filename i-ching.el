@@ -50,7 +50,7 @@
 (require 'request)
 
 (defgroup i-ching '()
-  "Cast hexagrams and consult the I Ching."
+  "Cast hexagrams and consult the The Book of Changes."
   :prefix "i-ching-"
   :group 'stochastism)
 
@@ -499,6 +499,15 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
   (let ((hexagrams i-ching-sequence-king-wen))
     (car (rassoc hexagram hexagrams))))
 
+;; predicate
+
+(defun i-ching-hexagram-p (input)
+ "A predicate for testing if the INPUT is a Hexagram."
+ (if (char-or-string-p input)
+     (when (rassoc input i-ching-sequence-king-wen)
+       t)
+   nil))
+
 ;; textual
 
 (defun i-ching-number-to-description (number)
@@ -839,13 +848,19 @@ Provided by Randomness and Integrity Services Ltd. via https://www.random.org/"
 
 ;;;###autoload
 (defun i-ching-interpretation (hexagram)
-  "Consult the I Ching to show an interpretation of a single HEXAGRAM."
-  (interactive)
+  "Consult the I Ching to show an interpretation of a single HEXAGRAM.
+The hexagram can be entered as a string, or by number."
+  (interactive "sHexagram number? " hexagram)
+  (let ((hexagram-number
+         (pcase hexagram
+           ((pred numberp) hexagram)
+           ((pred i-ching-hexagram-p)
+            (i-ching-hexagram-to-number hexagram)))))
   (format "%s\n\n%s\n\nJudgment: %s\n\nImage: %s\n\n"
-          (i-ching-number-to-hexagram hexagram)
-          (i-ching-number-to-description hexagram)
-          (i-ching-number-to-judgment hexagram)
-          (i-ching-number-to-image hexagram)))
+          (i-ching-number-to-hexagram hexagram-number)
+          (i-ching-number-to-description hexagram-number)
+          (i-ching-number-to-judgment hexagram-number)
+          (i-ching-number-to-image hexagram-number))))
 
 ;; querying the I Ching
 
