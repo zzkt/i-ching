@@ -189,12 +189,12 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
        "In the middle of the earth is water: The image of THE ARMY. The Leader nourishes and educates the people, and collects from among them a mighty army."
        "HEXAGRAM FOR THE ARMY")
     (8 "䷇"
-       "Hexagram 8 is named 比 (bǐ), “Grouping”. Other variations include “holding together” and “alliance”. Its inner (lower) trigram is ☷ (坤 kūn) field = (地) earth, and its outer (upper) trigram is ☵ (坎 kǎn) gorge = (水) water."
+       "Hexagram 8 is named 比 (bì), “Grouping”. Other variations include “holding together” and “alliance”. Its inner (lower) trigram is ☷ (坤 kūn) field = (地) earth, and its outer (upper) trigram is ☵ (坎 kǎn) gorge = (水) water."
        "HOLDING TOGETHER brings good fortune. Inquire of the oracle once again whether you possess sublimity, constancy, and perseverance; then there is no blame. Those who are uncertain gradually join. Whoever arrive too late meets with misfortune."
        "On the earth is water: The image of HOLDING TOGETHER. Thus the kings of antiquity Bestowed the different states as fiefs and cultivated friendly relations with their feudal lords."
        "HEXAGRAM FOR HOLDING TOGETHER")
     (9 "䷈"
-       "Hexagram 9 is named 小畜 (xiǎo chù), “Small Accumulating”. Other variations include “the taming power of the small” and “small harvest”. Its inner (lower) trigram is ☰ (乾 qián) force = (天) heaven, and its outer (upper) trigram is ☴ (巽 xùn) ground = (風) wind."
+       "Hexagram 9 is named 小畜 (xiǎo xù), “Small Accumulating”. Other variations include “the taming power of the small” and “small harvest”. Its inner (lower) trigram is ☰ (乾 qián) force = (天) heaven, and its outer (upper) trigram is ☴ (巽 xùn) ground = (風) wind."
        "THE TAMING POWER OF THE SMALL Has success. Dense clouds, no rain from our western region."
        "The wind drives across heaven: The image of THE TAMING POWER OF THE SMALL. Thus refine the outward aspect of your nature."
        "HEXAGRAM FOR SMALL TAMING")
@@ -254,7 +254,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
         "The wind blows over the earth: The image of CONTEMPLATION. Thus the kings of old visited the regions of the world, contemplated the people, and gave them instruction."
         "HEXAGRAM FOR CONTEMPLATION")
     (21 "䷔"
-        "Hexagram 21 is named 噬嗑 (shì kè), “Gnawing Bite”. Other variations include “biting through” and “biting and chewing”. Its inner (lower) trigram is ☳ (震 zhèn) shake = (雷) thunder, and its outer trigram is ☲ (離 lí) radiance = (火) fire."
+        "Hexagram 21 is named 噬嗑 (shì hé), “Gnawing Bite”. Other variations include “biting through” and “biting and chewing”. Its inner (lower) trigram is ☳ (震 zhèn) shake = (雷) thunder, and its outer trigram is ☲ (離 lí) radiance = (火) fire."
         "BITING THROUGH has success. It is favorable to let justice be administered."
         "Thunder and lighting: The image of BITING THROUGH. Thus the kings of former times made firm the laws through clearly defined penalties."
         "HEXAGRAM FOR BITING THROUGH")
@@ -279,7 +279,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
         "Under heaven thunder rolls: All things attain the natural state of innocence. Thus the kings of old, rich in virtue and in harmony with the time, fostered and nourished all beings."
         "HEXAGRAM FOR INNOCENCE")
     (26 "䷙"
-        "Hexagram 26 is named 大畜 (dà chù), “Great Accumulating”. Other variations include “the taming power of the great”, “great storage”, and “potential energy”. Its inner trigram is ☰ (乾 qián) force = (天) heaven, and its outer trigram is ☶ (艮 gèn) bound = (山) mountain."
+        "Hexagram 26 is named 大畜 (dà xù), “Great Accumulating”. Other variations include “the taming power of the great”, “great storage”, and “potential energy”. Its inner trigram is ☰ (乾 qián) force = (天) heaven, and its outer trigram is ☶ (艮 gèn) bound = (山) mountain."
         "THE TAMING POWER OF THE GREAT. Perseverance furthers. Not eating at home brings good fortune. It furthers one to cross the great water."
         "Heaven within the mountain: The image of THE TAMING POWER OF THE GREAT. Thus, you should acquaint yourself with the sayings of antiquity and many deeds of the past in order to strengthen your character."
         "HEXAGRAM FOR GREAT TAMING")
@@ -349,7 +349,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
         "Water on the mountain: The image of OBSTRUCTION. Thus turn your attention to yourself and mould your character."
         "HEXAGRAM FOR OBSTRUCTION")
     (40 "䷧"
-        "Hexagram 40 is named 解 (xiè), “Liberation”. Other variations include Deliverance, The Symbol of Loosening, Release, Eliminating Obstacles, Taking-apart, Untangled, Solution, Dissolution, Relief, Unloose, Release of Tension. Its inner trigram is ☵ (坎 kǎn) gorge = (水) water, and its outer trigram is ☳ (震 zhèn) shake = (雷) thunder."
+        "Hexagram 40 is named 解 (jiě), “Liberation”. Other variations include Deliverance, The Symbol of Loosening, Release, Eliminating Obstacles, Taking-apart, Untangled, Solution, Dissolution, Relief, Unloose, Release of Tension. Its inner trigram is ☵ (坎 kǎn) gorge = (水) water, and its outer trigram is ☳ (震 zhèn) shake = (雷) thunder."
         "Liberation finds advantage in the southwest. When the operation is completed, a return to stability brings good fortune. If operations are incomplete, it is best to finish them quickly."
         "Thunder and rain set in: The image of DELIVERANCE. In accordance with this, forgive errors and deal gently with misdeeds."
         "HEXAGRAM FOR DELIVERANCE")
