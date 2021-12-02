@@ -28,7 +28,7 @@ The package can be installed from [[https://melpa.org/#/i-ching][MELPA]] or manu
 
 There are several ways to produce a hexagram, from the traditional to pragmatic.
 
-Casting coins has been used for centuries as a way of consulting the I Ching and often favoured for it’s simplicity and ease. In contrast, the yarrow stalk method is widely considered more traditional, requiring dedication, time and careful elaboration of process. The coins may produce a result more quickly and directly (yang) while the yarrow stalks yield to time and can create contemplative focus (yin).
+Casting coins has been used for centuries as a way of consulting the I Ching and often favoured for its simplicity and ease. In contrast, the yarrow stalk method is widely considered more traditional, requiring dedication, time and careful elaboration of process. The coins may produce a result more quickly and directly (yang) while the yarrow stalks yield to time and can create contemplative focus (yin).
 
 Quickest of all (thus far) is the general purpose computer, which can produce a hexagram seemingly instantaneously.
 
@@ -64,7 +64,7 @@ It is also possible to show the interpretation (i.e. description, judgement and 
 — James Legge in The I Ching. Sacred Books of the East, vol. 16 (1899)
 #+END_QUOTE
 
-Consulting the I Ching as an oracle, in it’s most simple form, involves asking a question, casting a hexagram and interpreting the hexagram along with any possible changes to the hexagram.
+Consulting the I Ching as an oracle, in its most simple form, involves asking a question, casting a hexagram and interpreting the hexagram along with any possible changes to the hexagram.
 
 You can query the I Ching with an invocation of ~M-x i-ching-query~
 
@@ -131,7 +131,7 @@ Further details and analysis of the sources of randomness can be found in or nea
   - Alfred Huang (2000). The Complete I Ching: The Definitive Translation
   - Wu Jing Nuan (1991) Yi Jing
 
-** Pubic Domain sources
+** Public Domain sources
 
 The translation from Chinese into English by James Legge, /The Yî King/ (1882) as published in /Sacred Books of the East, vol. XVI. 2nd edition/ (1899) is in the public domain and available via [[https://archive.org/details/sacredbooksofchi16conf][archive.org]]. It appears to be the only significant English translation that is currently in the public domain. There is a parallel Chinese/English edition [[https://ctext.org/book-of-changes/yi-jing][《易經 - Yi Jing》]] hosted at the [[https://ctext.org][Chinese Text Project]] using the Legge translation.
 
