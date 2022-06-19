@@ -570,16 +570,19 @@ Depending on the context and circumstance some methods may be more suitable.
 see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
   (interactive)
   (let ((method-function
-         (pcase method
-           ;;  the casting method should return a hexagram (or changing hexagram)
-           ('3-coins  #'i-ching--three-coins)
-           ('yarrow-stalks #'i-ching--yarrow-stalks)
-           ('6-bit #'i-ching--random-number)
-           ('4-coins (message "unimplemented"))
-           ('bagua (message "unimplemented"))
-           ('cheezburger (message "LOL"))
-           (_
-            #'i-ching--random-number))))
+         (when (not method)
+           (let ((method i-ching-divination-method))
+             (message "casting hexagram using: %s" method)
+             (pcase method
+               ;;  the casting method should return a hexagram (or changing hexagram)
+               ('3-coins  #'i-ching--three-coins)
+               ('yarrow-stalks #'i-ching--yarrow-stalks)
+               ('6-bit #'i-ching--random-number)
+               ('4-coins (message "unimplemented"))
+               ('bagua (message "unimplemented"))
+               ('cheezburger (message "LOL"))
+               (_
+                #'i-ching--random-number))))))
     (when method-function
       (let* ((line-1 (funcall method-function))
              (line-2 (funcall method-function))
@@ -668,7 +671,7 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
 (defun i-ching-random (n &optional source)
   "Return a random integer from 1 to N inclusive (possibly with a specific SOURCE of randomness)."
   (when (not source) (setq source i-ching-randomness-source))
-  (message "using: %s" source)
+  (message "randomness source: %s" source)
   (pcase source
     ('quantum (pcase n
                 (64 (i-ching-q64))
