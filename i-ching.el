@@ -675,10 +675,10 @@ see: `i-ching-divination-method' & `i-ching-randomness-source' for details."
   (pcase source
     ('quantum (pcase n
                 (64 (i-ching-q64))
-                (_  (/ (i-ching-q64) (/ 64 n)))))
+                (_  (+ 1 (/ (i-ching-q64) (/ 64 n))))))
     ('atmospheric (pcase n
                     (64 (i-ching-r64))
-                    (_  (/ (i-ching-r64) (/ 64 n)))))
+                    (_  (+ 1 (/ (i-ching-r64) (/ 64 n))))))
     ('pseudo (+ 1 (random n)))
     (_
      (+ 1 (random n)))))
