@@ -12,6 +12,7 @@ The (first) appearance of anything (as a bud) is what we call a semblance; when 
 #+END_QUOTE
 
 ** Install & configure
+ [[https://melpa.org/#/i-ching][file:https://melpa.org/packages/i-ching-badge.svg]]
 
 The package can be installed from [[https://melpa.org/#/i-ching][MELPA]] or manually via [[https://github.com/zzkt/i-ching][github]].
 

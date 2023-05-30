@@ -83,30 +83,42 @@
            (symbol :tag "Use bespoke random numbers from random.org" random)
            (symbol :tag "Use Genuine Quantum Randomness from ANU" quantum)))
 
-(defcustom i-ching-hexagram-size 18 "Font size of Hexagrams."
+(defcustom i-ching-hexagram-size 18 "Font size of Hexagrams & Trigrams."
   :type 'integer)
 
 (defcustom i-ching-hexagram-font "DejaVu Sans" "Font to use for Hexagrams."
   :type 'string)
 
+(defcustom i-ching-trigram-font "DejaVu Sans" "Font to use for Trigrams."
+  :type 'string)
+
 (defun i-ching-update-fontsize ()
   "Change the font and size of Hexagrams in Unicode range 4DC0—4DFF."
   (interactive)
-  (let ((hexagram (font-spec :family i-ching-hexagram-font :size i-ching-hexagram-size)))
-    (set-fontset-font t '(#x4DC0 . #x4DFF) hexagram)))
-
+  (let ((hexagram (font-spec :family i-ching-hexagram-font :size i-ching-hexagram-size))
+        (trigram  (font-spec :family i-ching-trigram-font  :size i-ching-hexagram-size)))
+    (set-fontset-font t '(#x4DC0 . #x4DFF) hexagram)
+    (set-fontset-font t '(#x2360 . #x2637) trigram)))
 
 ;; various sequences of hexagrams
 
 (defvar i-ching-sequence-king-wen
-  '((1  . "䷀") (2  . "䷁") (3  . "䷂") (4  . "䷃") (5  . "䷄") (6  . "䷅") (7  . "䷆") (8  . "䷇")
-    (9  . "䷈") (10 . "䷉") (11 . "䷊") (12 . "䷋") (13 . "䷌") (14 . "䷍") (15 . "䷎") (16 . "䷏")
-    (17 . "䷐") (18 . "䷑") (19 . "䷒") (20 . "䷓") (21 . "䷔") (22 . "䷕") (23 . "䷖") (24 . "䷗")
-    (25 . "䷘") (26 . "䷙") (27 . "䷚") (28 . "䷛") (29 . "䷜") (30 . "䷝") (31 . "䷞") (32 . "䷟")
-    (33 . "䷠") (34 . "䷡") (35 . "䷢") (36 . "䷣") (37 . "䷤") (38 . "䷥") (39 . "䷦") (40 . "䷧")
-    (41 . "䷨") (42 . "䷩") (43 . "䷪") (44 . "䷫") (45 . "䷬") (46 . "䷭") (47 . "䷮") (48 . "䷯")
-    (49 . "䷰") (50 . "䷱") (51 . "䷲") (52 . "䷳") (53 . "䷴") (54 . "䷵") (55 . "䷶") (56 . "䷷")
-    (57 . "䷸") (58 . "䷹") (59 . "䷺") (60 . "䷻") (61 . "䷼") (62 . "䷽") (63 . "䷾") (64 . "䷿"))
+  '((1  . "䷀") (2  . "䷁") (3  . "䷂") (4  . "䷃")
+    (5  . "䷄") (6  . "䷅") (7  . "䷆") (8  . "䷇")
+    (9  . "䷈") (10 . "䷉") (11 . "䷊") (12 . "䷋")
+    (13 . "䷌") (14 . "䷍") (15 . "䷎") (16 . "䷏")
+    (17 . "䷐") (18 . "䷑") (19 . "䷒") (20 . "䷓")
+    (21 . "䷔") (22 . "䷕") (23 . "䷖") (24 . "䷗")
+    (25 . "䷘") (26 . "䷙") (27 . "䷚") (28 . "䷛")
+    (29 . "䷜") (30 . "䷝") (31 . "䷞") (32 . "䷟")
+    (33 . "䷠") (34 . "䷡") (35 . "䷢") (36 . "䷣")
+    (37 . "䷤") (38 . "䷥") (39 . "䷦") (40 . "䷧")
+    (41 . "䷨") (42 . "䷩") (43 . "䷪") (44 . "䷫")
+    (45 . "䷬") (46 . "䷭") (47 . "䷮") (48 . "䷯")
+    (49 . "䷰") (50 . "䷱") (51 . "䷲") (52 . "䷳")
+    (53 . "䷴") (54 . "䷵") (55 . "䷶") (56 . "䷷")
+    (57 . "䷸") (58 . "䷹") (59 . "䷺") (60 . "䷻")
+    (61 . "䷼") (62 . "䷽") (63 . "䷾") (64 . "䷿"))
   "The Hexagrams ordered by index in the King Wen sequence.")
 
 (defvar i-ching-sequence-leibniz
@@ -134,7 +146,7 @@
 ;;  Hexagram details have been extracted from Wikipedia (CC-BY-SA) and the Unicode Standard.
 ;;
 ;;  Several variants on the names and descriptions are included, with "The Judgment"
-;;  (or "Decision") and "The Image" for each hexagram based on either the unicode name,
+;;  (or "Decision") and "The Image" for each hexagram based on either the Unicode name,
 ;;  Wilhelm or Legge translation. Most of the descriptions have been updated to reflect
 ;;  current preferences for gender-neutral and imperative mood (mostly) in line with Pearson.
 ;;
@@ -149,7 +161,9 @@
 
 (defcustom i-ching-junzi "you should"
   "The preferred English translation of junzi 君子.
-c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 'the True Self' (Anthony), 'you should' (Pearson), with reference to “Conventions Used by This Translation” (Pearson)."
+c.f. `The Superior man’ (Legge, Wilhem), `Noble young one’ (Hatcher),
+`The True Self' (Anthony), `you should' (Pearson), with reference to
+`Conventions Used by This Translation' (Pearson)."
   :type '(string))
 
 (defvar i-ching-hexagram-summary
@@ -473,7 +487,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
      "BEFORE COMPLETION. Success. But if the young fox, that has nearly crossed the stream, gets his tail wet there will be no advantage."
      "The image of the condition before transition. Thus, you should carefully discriminate among the qualities of things, so that each can find its place."
      "HEXAGRAM FOR BEFORE COMPLETION"))
-  "The Hexagrams. Their name, description, judgment and image. Basis for interpretation.")
+  "The Hexagrams. Their name, description, judgement and image. Basis for interpretation.")
 
 
 ;;;;;; ;;;;;   ; ;  ; ; ; ; ;   ;
@@ -485,12 +499,12 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
 
 
 (defun i-ching-number-to-hexagram (number)
-  "Convert a NUMBER from the King Wen sequence to a unicode hexagram."
+  "Convert a NUMBER from the King Wen sequence to a Unicode hexagram."
   (let ((hexagrams i-ching-sequence-king-wen))
     (alist-get number hexagrams)))
 
 (defun i-ching-binary-to-hexagram (number)
-  "Convert a binary NUMBER to a unicode hexagram (in Lower → Upper line order)."
+  "Convert a binary NUMBER to a Unicode hexagram (in Lower → Upper line order)."
   (let ((hexagrams i-ching-sequence-leibniz))
     (alist-get number hexagrams)))
 
@@ -526,12 +540,12 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
     (nth 3 (alist-get number hexagrams))))
 
 (defun i-ching-number-to-unicode-name (number)
-  "The unicode name of Hexagram NUMBER."
+  "The Unicode name of Hexagram NUMBER."
   (let ((hexagrams i-ching-hexagram-summary))
     (nth 4 (alist-get number hexagrams))))
 
 (defun i-ching-number-to-name (number)
-  "The name of Hexagram NUMBER based on it's unicode name."
+  "The name of Hexagram NUMBER based on it's Unicode name."
   (let* ((hexagrams i-ching-hexagram-summary)
          (unicode-name (nth 4 (alist-get number hexagrams))))
     (when unicode-name
@@ -539,7 +553,7 @@ c.f. ‘The Superior man’ (Legge, Wilhem), ‘Noble young one’ (Hatcher), 't
 
 ;;;###autoload
 (defun i-ching-describe-hexagram (point mark)
-  "Show the name of a HEXAGRAM (between POINT and MARK) based on it's unicode name."
+  "Show the name of a HEXAGRAM (between POINT and MARK) based on it's Unicode name."
   (interactive "r")
   (if (use-region-p)
       (let* ((hexagrams i-ching-hexagram-summary)
